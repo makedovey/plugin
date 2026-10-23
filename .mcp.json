@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "dovey": {
+      "type": "http",
+      "url": "https://api.makedovey.com/mcp"
+    }
+  }
+}

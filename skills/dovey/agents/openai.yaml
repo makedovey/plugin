@@ -1,0 +1,10 @@
+interface:
+  display_name: "Dovey"
+  short_description: "Make and run Meta ads"
+dependencies:
+  tools:
+    - type: "mcp"
+      value: "dovey"
+      description: "Dovey: research, briefs and ads for Meta"
+      transport: "streamable_http"
+      url: "https://api.makedovey.com/mcp"

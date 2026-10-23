@@ -1,0 +1,20 @@
+{
+  "name": "dovey",
+  "description": "Dovey's plugin: make and run Meta ads from Claude.",
+  "owner": {
+    "name": "Dovey",
+    "email": "daryl@makedovey.com",
+    "url": "https://makedovey.com"
+  },
+  "plugins": [
+    {
+      "name": "dovey",
+      "displayName": "Dovey",
+      "source": "./",
+      "description": "Make and run Meta ads with Dovey: research the winning ads in a category and from competitors, write a brief, and make new ads in your brand's colours, type and voice, each an editable design on Dovey's canvas.",
+      "category": "marketing",
+      "homepage": "https://makedovey.com",
+      "tags": ["meta-ads", "facebook-ads", "instagram-ads", "ad-creatives", "marketing"]
+    }
+  ]
+}

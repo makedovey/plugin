@@ -1,0 +1,20 @@
+{
+  "name": "dovey",
+  "displayName": "Dovey",
+  "version": "0.1.0",
+  "description": "Make and run Meta ads with Dovey: research the winning ads in a category and from competitors, write a brief, and make new ads in your brand's colours, type and voice, each an editable design on Dovey's canvas.",
+  "author": {
+    "name": "Dovey",
+    "email": "daryl@makedovey.com",
+    "url": "https://makedovey.com"
+  },
+  "homepage": "https://makedovey.com",
+  "repository": "https://github.com/makedovey/plugin",
+  "license": "MIT",
+  "keywords": ["meta-ads", "facebook-ads", "instagram-ads", "ad-creatives", "competitor-research", "marketing"],
+  "icon": "./assets/logo.svg",
+  "documentationUrl": "https://github.com/makedovey/plugin/blob/main/README.md",
+  "supportUrl": "https://makedovey.com/about",
+  "privacyPolicyUrl": "https://makedovey.com/privacy",
+  "termsOfServiceUrl": "https://makedovey.com/terms"
+}

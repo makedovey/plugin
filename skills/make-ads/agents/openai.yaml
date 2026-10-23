@@ -1,0 +1,5 @@
+interface:
+  display_name: "Make ads"
+  short_description: "Research, brief and make a batch of Meta ads"
+policy:
+  allow_implicit_invocation: false

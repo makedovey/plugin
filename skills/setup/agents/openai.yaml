@@ -1,0 +1,5 @@
+interface:
+  display_name: "Set up Dovey"
+  short_description: "Connect Dovey and set up the brand"
+policy:
+  allow_implicit_invocation: false
