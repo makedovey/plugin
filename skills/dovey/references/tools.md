@@ -30,13 +30,17 @@ The brand's style as its ads use it (onboarding's "This is your brand style"): t
 
 How to design a good ad on Dovey's canvas, for any agent: the method (brief first, a proven layout before free composition, one section at a time, a screenshot and a verdict after each, fix in place, never start over), the checklist the lint measures, then the HTML contract, type, spacing, the brand rule and the tools. Read it once per session, before the first frame. method=true adds the same steps and checklist as data (the text already has them).
 
+## get_canvas_items
+
+What is on a canvas (the board: frames, groups of frames, text notes, images), as an outline: one line an item with its kind, title, id, box [x,y wxh], a frame's size, design_id and status (done, queued, making, waiting, failed), a group's layout and progress. Read it before changing a canvas and address items by id; a frame's design_id works with every ad tool (get_frame_tree, update_styles, set_text …). Also the canvas's template (a group, a note and the prompt) and the makes running. if_changed_since=rev answers {unchanged} when nothing moved.
+
 ## get_job
 
 Status of a background job: queued | running | done | failed. done carries output, failed carries error. While running, stage is a short human line describing the current step, and progress {done, total} counts finished variants on generate jobs. queue_position appears while queued; estimated_seconds is the typical total duration for this kind of job — poll roughly every estimated_seconds/4.
 
 ## get_me
 
-Who am I: user, workspace, brand summary, and credit balance.
+Who am I: user, workspace, brand summary, and credit balance. Read-only: call it to verify the connection. setup says what the brand setup has done (brand: the website was read; product: the main product's cutout confirmed; style: the brand style confirmed; facts: the numbers and claims confirmed); when any is false, finish it with the person before the first ad.
 
 ## get_onboarding_product
 
@@ -57,6 +61,10 @@ The workspace's canvases. Each canvas is one project with one page: a workflow o
 ## make_design
 
 Make an ad creative from words, in the brand: one picture with the headline, a body line and a button in it, the brand's product, logo, colours and type, plus the primary text and headline to publish it with. Pass prompt (the brief in the person's words), product (one of the brand's products by name) and photo_url (a photo of their product they uploaded) when given. For several variations call it once per variation, each with its own brief (a different angle, scene, composition and headline direction), in the same step. Returns the design with its picture.
+
+## make_frames
+
+Make ads on the canvas for the brand: a new group of n frames (one loose frame when n is 1), every frame titled at once and filled in as each ad lands. The batch path: with plan_id (the Brief you wrote with plan_creatives) its rows are the ads; without, the Brief is written first from the prompt. Every ad is made with the designed engine (layouts in the brand's look, no image model) and spread across angles, layouts and grounds, unless the person asked for pictures (engine picture). from_item remakes an image on the canvas (a competitor's ad or an uploaded ad) n times for the brand. group_id makes the frames a make left waiting (the credits ran out) or failed. Runs at once, no confirmation: the credits (1 an ad in Design, 3 in Picture) are reserved now; what the balance does not cover waits. Returns the group and the job.
 
 ## make_plan
 

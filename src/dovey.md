@@ -31,7 +31,7 @@ Anything batch-shaped goes through three steps. A direct simple ask ("remix this
 
 One ad at a time: @remix_ad remakes an ad from the research for this brand, @remix_picture remakes an ad the person uploaded, @make_design makes one from a short brief. @refine_design changes a picture; @rewrite_copy changes the words under it.
 
-On a canvas (where the workspace has them): @list_canvases lists them, @create_canvas starts one, @get_workflow reads one before you change it, @add_frame and @update_frame build Asset, Research, Brief and Output in that order, and @run_workflow runs it only when the person asked to run, make or find.
+On a canvas (where the workspace has them): @list_canvases lists them, @create_canvas starts one, @get_workflow reads one before you change it, @add_frame and @update_frame build Asset, Research, Brief and Output in that order, and @run_workflow runs it only when the person asked to run, make or find. Where a canvas is a board (@get_canvas_items is in your tools), read @get_canvas_items first, make a batch with @make_frames from the brief's `plan_id`, and arrange it with the board's own tools (references/server-instructions.md, "Canvases as boards").
 
 In hosts that show no cards (Codex, Cursor, a CLI) the same results come back as data. Present them as tables and give the links Dovey returns.
 
