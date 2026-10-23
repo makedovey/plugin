@@ -40,7 +40,7 @@ Status of a background job: queued | running | done | failed. done carries outpu
 
 ## get_me
 
-Who am I: user, workspace, brand summary, and credit balance. Read-only: call it to verify the connection. setup says what the brand setup has done (brand: the website was read; product: the main product's cutout confirmed; style: the brand style confirmed; facts: the numbers and claims confirmed); when any is false, finish it with the person before the first ad.
+Who am I: user, workspace, brand summary, and this week's usage. Read-only: call it to verify the connection. setup says what the brand setup has done (brand: the website was read; product: the main product's cutout confirmed; style: the brand style confirmed; facts: the numbers and claims confirmed); when any is false, finish it with the person before the first ad.
 
 ## get_onboarding_product
 
@@ -64,11 +64,11 @@ Make an ad creative from words, in the brand: one picture with the headline, a b
 
 ## make_frames
 
-Make ads on the canvas for the brand: a new group of n frames (one loose frame when n is 1), every frame titled at once and filled in as each ad lands. The batch path: with plan_id (the Brief you wrote with plan_creatives) its rows are the ads; without, the Brief is written first from the prompt. Every ad is made with the designed engine (layouts in the brand's look, no image model) and spread across angles, layouts and grounds, unless the person asked for pictures (engine picture). from_item remakes an image on the canvas (a competitor's ad or an uploaded ad) n times for the brand. group_id makes the frames a make left waiting (the credits ran out) or failed. Runs at once, no confirmation: the credits (1 an ad in Design, 3 in Picture) are reserved now; what the balance does not cover waits. Returns the group and the job.
+Make ads on the canvas for the brand: a new group of n frames (one loose frame when n is 1), every frame titled at once and filled in as each ad lands. The batch path: with plan_id (the Brief you wrote with plan_creatives) its rows are the ads; without, the Brief is written first from the prompt. Every ad is made with the designed engine (layouts in the brand's look, no image model) and spread across angles, layouts and grounds, unless the person asked for pictures (engine picture). from_item remakes an image on the canvas (a competitor's ad or an uploaded ad) n times for the brand. group_id makes the frames a make left waiting (the week's usage ran out) or failed. Runs at once; what the balance does not cover waits. Returns the group and the job.
 
 ## make_plan
 
-Make the plan's ads: every row becomes a creative in the brand's colours and type, on the plan's page, three at a time. Returns at once with a job; the card fills in as they land, or poll get_plan. Pass rows to make only some (their n). 3 credits an ad (1 for a plan written with engine design; in mix a layout ad is 1 and the other 2 are given back), reserved now and given back for any ad that fails.
+Make the plan's ads: every row becomes a creative in the brand's colours and type, on the plan's page, three at a time. Returns at once with a job; the card fills in as they land, or poll get_plan. Pass rows to make only some (their n).
 
 ## meta_ad_results
 
@@ -80,7 +80,7 @@ Prepare publishing ads to the connected Meta ad account, for the person to confi
 
 ## plan_creatives
 
-The test plan before a batch: research the category and competitors (or take a research report you already have), then write a table of N ads for this brand, every row different in angle, visual or hook, each with the ad it borrows from and what it tests. The plan lands on a new page of the canvas. Show it as a table; make_plan makes the rows when the person says go (or at once when they asked to make them). A direct simple ask never needs a plan. 1 credit for the research.
+The test plan before a batch: research the category and competitors (or take a research report you already have), then write a table of N ads for this brand, every row different in angle, visual or hook, each with the ad it borrows from and what it tests. The plan lands on a new page of the canvas. Show it as a table; make_plan makes the rows when the person says go (or at once when they asked to make them). A direct simple ask never needs a plan.
 
 ## preview_brand_style
 
@@ -96,11 +96,11 @@ Make this ad for the caller's own brand: the same picture and composition with t
 
 ## remix_picture
 
-Remix an ad the person uploaded (a screenshot or saved image of another brand's ad) into one for their brand: same composition and idea, their product, words, colours and type. Pass the picture's asset id (in the chat, the attachment's id). Same options and price as remix_ad (3 credits). Returns the creative with its picture and copy.
+Remix an ad the person uploaded (a screenshot or saved image of another brand's ad) into one for their brand: same composition and idea, their product, words, colours and type. Pass the picture's asset id (in the chat, the attachment's id). Same options and price as remix_ad. Returns the creative with its picture and copy.
 
 ## research_ads
 
-The research report before making ads: the top performing ads for a category and for named competitors, ranked by Dovey's score (how long an ad ran, versions kept, reach), each with its picture, angle, hook and why it works; the angles and hooks that score best. Static image ads only. Pass competitors as names, websites or Meta page ids (up to six; an account Dovey has not read is read from the Ad Library on the spot, and with a category given only their ads about it are kept). The category itself is asked of the Ad Library when Dovey has few ads for it. 1 credit plus the reads. Shown as a card in Claude, 12 ads at a time.
+The research report before making ads: the top performing ads for a category and for named competitors, ranked by Dovey's score (how long an ad ran, versions kept, reach), each with its picture, angle, hook and why it works; the angles and hooks that score best. Static image ads only. Pass competitors as names, websites or Meta page ids (up to six; an account Dovey has not read is read from the Ad Library on the spot, and with a category given only their ads about it are kept). The category itself is asked of the Ad Library when Dovey has few ads for it. Shown as a card in Claude, 12 ads at a time.
 
 ## rewrite_copy
 
@@ -108,7 +108,7 @@ Change the words that run with a creative (its primary text and headline) withou
 
 ## run_workflow
 
-Run the workflow: every stale frame in order (research, then brief, then output), or with only=[frame ids] those frames plus anything stale before them. Research is 1 credit, the brief is free, the output is 3 credits an ad (1 an ad when its engine is design; mix reserves 3 and gives 2 back for each layout ad); the credits are reserved now and given back for any ad that fails. Returns the run and the job: poll get_run or get_job. A run already going for this workflow is returned instead of starting a second. Only when the person asked to run or make.
+Run the workflow: every stale frame in order (research, then brief, then output), or with only=[frame ids] those frames plus anything stale before them. The brief is free. Returns the run and the job: poll get_run or get_job. A run already going for this workflow is returned instead of starting a second. Only when the person asked to run or make.
 
 ## save_brand_facts
 

@@ -12,7 +12,7 @@ Dovey is one MCP server, `https://api.makedovey.com/mcp`, which this plugin conn
 
 ## 1. Check the connection
 
-Call @get_me. It is read-only and free. A result with a `user` and an `org` is the only proof that Dovey is connected and signed in; a config entry, a server in a list or a tool list is not. Do not make anything, spend credits or change the brand to test the connection.
+Call @get_me. It is read-only and free. A result with a `user` and an `org` is the only proof that Dovey is connected and signed in; a config entry, a server in a list or a tool list is not. Do not make anything, run anything that uses the plan's usage, or change the brand to test the connection.
 
 If there are no Dovey tools, or the call fails:
 
@@ -25,7 +25,7 @@ Then call @get_me again before you say it worked.
 
 ## 2. Say what is connected
 
-The workspace name, the plan and the credits left, from @get_me, in one short line.
+The workspace name, the plan and this week's usage, from @get_me, in one short line.
 
 ## 3. Set up the brand
 

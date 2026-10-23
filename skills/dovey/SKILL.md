@@ -11,11 +11,11 @@ Dovey is an AI that makes and runs Meta ads. It reads a brand from its website, 
 
 ## Start with get_me
 
-Call `get_me` before anything else in a session. It is read-only and free. It returns the person (`user`), the workspace (`org`: the plan, the credits included and used) and the brand (`brand`, or null when there is none yet).
+Call `get_me` before anything else in a session. It is read-only and free. It returns the person (`user`), the workspace (`org`: the plan), this week's usage (`usage`: the share used and when it resets) and the brand (`brand`, or null when there is none yet).
 
 - No Dovey tools, or a sign-in error: Dovey is not connected yet. Follow the `setup` skill (`/dovey:setup` in Claude). Never ask for a password, an API key or a token in the chat.
 - `brand` is null: set up the brand (below) before you make any ad.
-- Mention the plan and the credits when they matter: before spending, or when asked.
+- Mention the plan and this week's usage when they matter: when it runs low, or when asked.
 
 ## Set up the brand
 
@@ -34,7 +34,7 @@ Never write a number, a price, an offer or a claim for them. Ask.
 Anything batch-shaped goes through three steps. A direct simple ask ("remix this ad", "one ad for the launch") skips the brief.
 
 1. **Research.** `research_ads` with the category in plain words and the competitors the person named. Present the top ads as a table with their pictures, angles and hooks, and say why they win.
-2. **Brief.** `plan_creatives` with `n`, the focus they asked for (a launch, a season, an offer) and `source_ad_ids` from the research, so it does not research again. The brief is a table of ads, every row different in angle, visual or hook, each with the ad it borrows from and what it tests. Show it as a table and say the credits making it will spend.
+2. **Brief.** `plan_creatives` with `n`, the focus they asked for (a launch, a season, an offer) and `source_ad_ids` from the research, so it does not research again. The brief is a table of ads, every row different in angle, visual or hook, each with the ad it borrows from and what it tests. Show it as a table.
 3. **Make.** `make_plan` when the person says go, or at once when they asked for the ads outright. It returns a job: the card fills in as the ads land, or poll `get_plan`. Show every ad with its primary text and headline, and the canvas link Dovey returns.
 
 One ad at a time: `remix_ad` remakes an ad from the research for this brand, `remix_picture` remakes an ad the person uploaded, `make_design` makes one from a short brief. `refine_design` changes a picture; `rewrite_copy` changes the words under it.
@@ -43,7 +43,7 @@ On a canvas (where the workspace has them): `list_canvases` lists them, `create_
 
 In hosts that show no cards (Codex, Cursor, a CLI) the same results come back as data. Present them as tables and give the links Dovey returns.
 
-**Credits.** Dovey's own AI work spends the workspace's credits: research, the research behind a brief, every ad made. Reading what is there is free. Each tool's description says what it costs. Say the total before a batch and wait for a yes. On the Free plan make 3 ads unless they ask for more. When the credits run out, say so with the plan options Dovey returns.
+**Usage.** Each plan has an amount of usage a week that resets Monday. Dovey's own AI work uses it: research, the research behind a brief, every ad made, pictures most of all. Reading what is there and your own edits on the canvas use almost none. Never say what something costs or how much it used. On the Free plan make 3 ads unless they ask for more. When a tool answers that this week's usage is used, relay its sentence word for word, link included.
 
 ## Design an ad yourself on the canvas
 

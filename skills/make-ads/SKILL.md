@@ -11,9 +11,9 @@ argument-hint: "[how many ads] [what they are for]"
 
 The person's words after the command say how many ads and what they are for. With no number, ask once; on the Free plan suggest 3.
 
-1. **Check.** `get_me`. No Dovey tools or no sign-in: follow the `setup` skill first. No brand: set up the brand first (the `setup` skill). Note the credits left.
+1. **Check.** `get_me`. No Dovey tools or no sign-in: follow the `setup` skill first. No brand: set up the brand first (the `setup` skill). Note the plan and this week's usage.
 2. **Research.** `research_ads` with the category (what they named, else what the brand sells) and the competitors they named. Show the top ads as a table with their pictures and why they win.
-3. **Brief.** `plan_creatives` with `n`, their focus, and `source_ad_ids` from the research. Show the brief as a table and say the credits making it will spend. Wait for the person's go.
+3. **Brief.** `plan_creatives` with `n`, their focus, and `source_ad_ids` from the research. Show the brief as a table. Wait for the person's go.
 4. **Make.** `make_plan`. Poll `get_plan` until every row has landed. Show every ad with its primary text and headline, and the canvas link.
 5. **Judge.** Check each ad against the checklist in the `dovey` skill. Say which you would change and offer `refine_design` or `rewrite_copy`.
 

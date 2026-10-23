@@ -9,7 +9,7 @@ This plugin brings Dovey into Claude (web, desktop and Claude Code) and Codex. I
 
 ## What you need
 
-A Dovey account. Signing in for the first time makes one: the Free plan has 10 credits a month and needs no card. Research and new ads spend credits; reading what is there is free. Plans and prices are at [makedovey.com/pricing](https://makedovey.com/pricing). Your assistant's own plan is separate.
+A Dovey account. Signing in for the first time makes one: the Free plan has limited usage each week and needs no card. Research and new ads use the plan's weekly usage; reading what is there uses almost none. Plans and prices are at [makedovey.com/pricing](https://makedovey.com/pricing). Your assistant's own plan is separate.
 
 There is no API key. The first Dovey call opens Dovey's sign-in in your browser (work email or Google), and you approve the connection there.
 

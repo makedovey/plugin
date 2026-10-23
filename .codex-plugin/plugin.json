@@ -16,7 +16,7 @@
   "interface": {
     "displayName": "Dovey",
     "shortDescription": "Make and run Meta ads",
-    "longDescription": "Dovey reads your brand from its website, finds the winning ads in your category and from your competitors, writes a brief, and makes new Facebook and Instagram ads in your brand's colours, type and voice. Every ad is an editable design on a Dovey canvas. Needs a Dovey account: signing in for the first time makes one on the Free plan, 10 credits a month with no card. Research and new ads spend credits.",
+    "longDescription": "Dovey reads your brand from its website, finds the winning ads in your category and from your competitors, writes a brief, and makes new Facebook and Instagram ads in your brand's colours, type and voice. Every ad is an editable design on a Dovey canvas. Needs a Dovey account: signing in for the first time makes one on the Free plan, with limited usage each week and no card. Research and new ads use the plan's weekly usage.",
     "developerName": "Dovey",
     "category": "Creativity",
     "capabilities": ["Read", "Write", "Interactive"],
