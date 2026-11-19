@@ -1,20 +1,27 @@
 {
-  "name": "dovey",
-  "description": "Dovey's plugin: make and run Meta ads from Claude.",
+  "name": "klayson",
+  "description": "Klayson's plugin: design marketing in your brand and give your agents the brand guide.",
   "owner": {
-    "name": "Dovey",
-    "email": "daryl@makedovey.com",
-    "url": "https://makedovey.com"
+    "name": "Klayson",
+    "email": "daryl@klayson.com",
+    "url": "https://klayson.com"
   },
   "plugins": [
     {
-      "name": "dovey",
-      "displayName": "Dovey",
+      "name": "klayson",
+      "displayName": "Klayson",
       "source": "./",
-      "description": "Make and run Meta ads with Dovey: research the winning ads in a category and from competitors, write a brief, and make new ads in your brand's colours, type and voice, each an editable design on Dovey's canvas.",
+      "description": "Klayson's studio and brand guide in your agent: design ads, social posts and other marketing in your brand on Klayson's canvas, and read the brand guide (voice, logo, colors, type, imagery, products) so whatever your agent designs or builds, an ad, a website or a deck, follows the brand.",
       "category": "marketing",
-      "homepage": "https://makedovey.com",
-      "tags": ["meta-ads", "facebook-ads", "instagram-ads", "ad-creatives", "marketing"]
+      "homepage": "https://klayson.com",
+      "tags": [
+        "brand-guide",
+        "brand",
+        "ad-creatives",
+        "social-media",
+        "meta-ads",
+        "marketing"
+      ]
     }
   ]
 }

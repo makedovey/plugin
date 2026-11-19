@@ -1,10 +1,10 @@
 interface:
-  display_name: "Dovey"
-  short_description: "Make and run Meta ads"
+  display_name: "Klayson"
+  short_description: "Design in your brand and follow its guide"
 dependencies:
   tools:
     - type: "mcp"
-      value: "dovey"
-      description: "Dovey: research, briefs and ads for Meta"
+      value: "klayson"
+      description: "Klayson: the studio and the brand guide"
       transport: "streamable_http"
-      url: "https://api.makedovey.com/mcp"
+      url: "https://api.klayson.com/mcp"

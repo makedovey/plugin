@@ -1,8 +1,8 @@
 {
   "mcpServers": {
-    "dovey": {
+    "klayson": {
       "type": "http",
-      "url": "https://api.makedovey.com/mcp"
+      "url": "https://api.klayson.com/mcp"
     }
   }
 }

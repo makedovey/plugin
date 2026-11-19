@@ -1,11 +1,11 @@
 {
-  "name": "dovey",
+  "name": "klayson",
   "interface": {
-    "displayName": "Dovey"
+    "displayName": "Klayson"
   },
   "plugins": [
     {
-      "name": "dovey",
+      "name": "klayson",
       "source": {
         "source": "local",
         "path": "./"
