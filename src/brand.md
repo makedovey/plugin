@@ -14,7 +14,7 @@ The same flow, for agents with no plugin, is at https://klayson.com/agents.md.
 ## 1. Find the brand
 
 - **The repo has `KLAYSON.md`.** Follow it. Do not set anything up.
-- **The Klayson tools are in this session.** Call @get_me. With a brand, go to step 3. With `get_page` missing from your tools, this workspace has the older brand guide: follow the `dovey` skill's "The brand guide" instead.
+- **The Klayson tools are in this session.** Call @get_me. With a brand, go to step 3. With `get_page` missing from your tools, this workspace has the older brand guide: follow the `klayson` skill's "The brand guide" instead.
 - **Neither.** Ask once and wait for a yes: "Set up a Klayson brand guide from your site and code? Free, no sign-up." Never set it up unasked. If they say no, build without it and do not ask again in this session.
 
 ## 2. Set it up (after the yes)

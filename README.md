@@ -5,7 +5,7 @@
 This plugin brings Klayson into Claude (web, desktop and Claude Code) and Codex. It adds two things:
 
 - **The Klayson server**, `https://api.klayson.com/mcp`, with its tools: the brand guide, research, briefs, making ads and posts, the canvas.
-- **Three skills.** `dovey` is the know-how: start with `get_me`, set up the brand, read and follow the brand guide, research then brief then make, design an ad on the canvas, judge an ad, and what never to do. `setup` checks the connection and sets up the brand. `make-ads` runs research, brief and make for a number of ads.
+- **Three skills.** `klayson` is the know-how: start with `get_me`, set up the brand, read and follow the brand guide, research then brief then make, design an ad on the canvas, judge an ad, and what never to do. `setup` checks the connection and sets up the brand. `make-ads` runs research, brief and make for a number of ads.
 
 ## What you need
 
