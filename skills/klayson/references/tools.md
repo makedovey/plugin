@@ -12,7 +12,7 @@ Send the design values you read from this repo, so every agent reads the brand a
 
 ## check_against_brand
 
-Check a picture or a canvas frame against a brand's own pieces (its running ads and posts): the palette, the ground, the case, where the logo sits, how large the product is, whether a button is drawn. Answers a score (0 to 1) and notes worst first, each with what was measured, what the brand does and the fix, and `against`: which brand or read it was checked against. Give a design_id (a frame of this workspace), an asset_id, or a public image_url. By default the check is against the workspace's own brand (`brand` picks one of several); read_id checks against a site read with extract_brand instead (depth full, so it has the brand's pieces). Agents call it on every output before showing it. 1 API credit with an API key or on /mcp/brand. The answer says credits_remaining.
+Check a picture or a canvas frame against a brand's own pieces (its running ads and posts): the palette, the ground, the case, where the logo sits, how large the product is, whether a button is drawn. Answers a score (0 to 1) and notes worst first, each with what was measured, what the brand does and the fix, and `against`: which brand or read it was checked against. Give a design_id (a frame of this workspace), an asset_id, or a public image_url. By default the check is against the workspace's own brand (`brand` picks one of several); read_id checks against a site read with extract_brand instead (depth full, so it has the brand's pieces). Use it to check a finished picture before it is shown. 1 API credit with an API key or on /mcp/brand. The answer says credits_remaining.
 
 ## check_design
 
@@ -64,7 +64,7 @@ Status of a background job, such as a brand being read by create_brand: queued, 
 
 ## get_library
 
-The brand's library: the work its team approved and the references it keeps, newest first. Before you make something for a medium, call it with that medium (web, app, ads, social, slides, email or print) and match what was approved: its layout, its density, its tone. The brand's own running ads and social posts are in it as approved. Filter by status (approved or reference), medium and kind (image, video, motion, code, page, link). Each card has its title, kind, medium, status, a picture (thumb_url), its address or the start of its code, and a note on why it is good. item_id answers one item in full, its whole code included. A reference is something the team likes that is not its own: take the idea, never copy it.
+The brand's library: the work its team approved and the references it keeps, newest first, by medium (web, app, ads, social, slides, email or print), so work made for a medium can match what was approved there: its layout, its density, its tone. The brand's own running ads and social posts are in it as approved. Filter by status (approved or reference), medium and kind (image, video, motion, code, page, link). Each card has its title, kind, medium, status, a picture (thumb_url), its address or the start of its code, and a note on why it is good. item_id answers one item in full, its whole code included. A reference is something the team likes that is not its own: take the idea, never copy it.
 
 ## get_me
 
