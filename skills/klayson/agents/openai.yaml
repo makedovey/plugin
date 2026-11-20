@@ -7,4 +7,4 @@ dependencies:
       value: "klayson"
       description: "Klayson: the brand guide, the Brand Extract API and the check"
       transport: "streamable_http"
-      url: "https://api.klayson.com/mcp/brand"
+      url: "https://api.klayson.com/mcp"

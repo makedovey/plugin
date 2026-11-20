@@ -8,7 +8,7 @@ disable-model-invocation: true
 
 # Set up Klayson
 
-Klayson is one MCP server, `https://api.klayson.com/mcp`, which this plugin connects. Sign-in is OAuth in the browser; there is no API key.
+Klayson is one MCP server, `https://api.klayson.com/mcp/full`, which this plugin connects. Sign-in is OAuth in the browser; there is no API key.
 
 ## 1. Check the connection
 

@@ -2,7 +2,7 @@
   "mcpServers": {
     "klayson": {
       "type": "http",
-      "url": "https://api.klayson.com/mcp/brand"
+      "url": "https://api.klayson.com/mcp"
     }
   }
 }

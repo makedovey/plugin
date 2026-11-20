@@ -7,7 +7,7 @@ description: Read a brand from Klayson before you build or design anything for i
 
 # Klayson
 
-Klayson is the brand and design source of truth for agents. It holds a brand's system and checks what you make against it. It makes nothing itself: you do the making. This plugin connects the Klayson server at `https://api.klayson.com/mcp/brand`, and this skill is how to use its tools well. The `brand` skill is the same flow for a codebase, including a repo with no Klayson connection yet.
+Klayson is the brand and design source of truth for agents. It holds a brand's system and checks what you make against it. It makes nothing itself: you do the making. This plugin connects the Klayson server at `https://api.klayson.com/mcp`, and this skill is how to use its tools well. The `brand` skill is the same flow for a codebase, including a repo with no Klayson connection yet.
 
 Three things, in this order, every time: read the brand before you make anything, extract a site when you need another brand, and check the result.
 
@@ -26,7 +26,7 @@ Call @get_me again before you say it worked.
 
 ## Set up the brand
 
-With no brand yet, ask once for the website and wait for a yes. Then @create_brand with its `url`, and @get_job with `wait` true until the read is done (about a minute; tell the person it is reading their site). A brand guide they already have as a PDF, a Word or PowerPoint file or a Google Docs or Slides link comes in with @import_brand_guide (a file on their computer goes through @create_upload_link first). With several brands, ask which one and pass `brand` on every brand tool.
+With no brand yet, ask once for the website and wait for a yes. Then @create_brand with its `url`, and @get_job with `wait` true until the read is done (about a minute; tell the person it is reading their site). A brand guide they already have as a PDF, a Word or PowerPoint file or a Google Docs or Slides link comes in with @import_brand_guide (a file on their computer goes through @create_upload_link first). With several brands, ask which one and pass `brand` on every brand tool; @set_default_brand sets the one used when `brand` is left out.
 
 ## 1. Read the brand before you make anything
 
@@ -40,6 +40,8 @@ With no brand yet, ask once for the website and wait for a yes. Then @create_bra
 Use the values exactly (colors by hex and role, the typefaces with their files, spacing and radius as given), follow the rules, match the examples and open the pictures. A value's `source` says where it came from, and an owner's edit wins over a read. Where a page says something is not known, do not invent it: ask the person, or work from the Brand pages and say that you did.
 
 Then @get_library with the medium you are making for: the work the team approved and the references it keeps. Match what was approved.
+
+For a project that keeps its design notes in the repo (a `DESIGN.md`, `CLAUDE.md` or `AGENTS.md`), @get_brand_markdown answers the whole brand guide as one markdown document, or one page with `page`.
 
 ## 2. Extract any site
 
@@ -61,6 +63,8 @@ Say what the check found in plain words, what you changed, and what is left.
 ## Change the brand
 
 People who can edit the brand change it with @add_page and @update_page; people who can only view use @suggest_change, which someone who can edit decides (@list_suggestions, @decide_suggestion). Structure what you add: values as tokens, rules in the source's own words, examples, and a `use_when`. In a repo, read its design values yourself (color tokens, fonts and type styles, spacing, radius, shadows, breakpoints, the main components) and send them with @capture_codebase, each with its file and line. Never send secrets, env files or application code. @extract_design_context reads the brand's own site's design again.
+
+When the brand's own site has changed, @scrape_brand reads it again; anything a person or an agent edited stays as they left it. @upload_brand_font adds one of the brand's own font files the read could not get (a licensed or custom face). @read_brand_pieces reads the brand's running ads and Instagram posts for its Ads and Social pages, and sets or corrects its Instagram handle; @remove_brand_piece takes a wrong one out.
 
 ## Save what was approved
 

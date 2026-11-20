@@ -4,7 +4,7 @@
 
 This plugin brings Klayson into Claude (web, desktop and Claude Code) and Codex. It adds two things:
 
-- **The Klayson brand server**, `https://api.klayson.com/mcp/brand`, with its tools: the brand guide (`get_brand`, `get_page` and the edit tools), the Brand Extract API (`extract_brand`, `get_brand_extract`, `get_brand_materials`, `check_against_brand`, `get_api_credits`), the check (`check_design`), sending your codebase's design values (`capture_codebase`) and the Library of approved work.
+- **The Klayson brand server**, `https://api.klayson.com/mcp`, with its tools: the brand guide (`get_brand`, `get_page` and the edit tools), the Brand Extract API (`extract_brand`, `get_brand_extract`, `get_brand_materials`, `check_against_brand`, `get_api_credits`), the check (`check_design`), sending your codebase's design values (`capture_codebase`) and the Library of approved work.
 - **Two skills.** `klayson` is the know-how: start with `get_me`, set up the brand, read the brand before you make anything, extract a site, check the result, and what never to do. `brand` is the same flow for a codebase, including a repo with no Klayson connection yet.
 
 ## What you need
@@ -48,27 +48,27 @@ Then in Codex, type `/plugins`, open the Klayson marketplace and install Klayson
 
 Klayson is a remote MCP server. Add it the way your client adds one:
 
-- Address: `https://api.klayson.com/mcp/brand`
+- Address: `https://api.klayson.com/mcp`
 - Transport: Streamable HTTP
 - Authentication: OAuth on the first call. No API key.
 
 ```sh
-claude mcp add --transport http klayson https://api.klayson.com/mcp/brand
+claude mcp add --transport http klayson https://api.klayson.com/mcp
 ```
 
 ```toml
 # ~/.codex/config.toml
 [mcp_servers.klayson]
-url = "https://api.klayson.com/mcp/brand"
+url = "https://api.klayson.com/mcp"
 ```
 
-Most other clients take `{"mcpServers": {"klayson": {"url": "https://api.klayson.com/mcp/brand"}}}`. The same sign-in also opens `https://api.klayson.com/mcp`, which lists the brand tools first and Klayson's older ad and canvas tools after them. Without the plugin you get the tools and Klayson's own instructions, but not the skills.
+Most other clients take `{"mcpServers": {"klayson": {"url": "https://api.klayson.com/mcp"}}}`. The same sign-in also opens `https://api.klayson.com/mcp/full`, which lists the brand tools first and Klayson's older ad and canvas tools after them. Without the plugin you get the tools and Klayson's own instructions, but not the skills.
 
 ## What it runs, sends and fetches
 
 The plugin is text: a server address and two skills. It installs no local server, no hooks, no scripts and no packages.
 
-Your assistant sends the tool calls you ask for, and your sign-in, to `https://api.klayson.com/mcp/brand`. The calls can carry your brand's website, its guide and the edits you make to it, the design values your agent reads from your code (tokens, fonts, components, each with its file and line, never secrets or application code), other websites you ask it to read, the HTML, page addresses or pictures it checks, and files you upload. Klayson answers with your brand's pages, the reads, the checks and links to files on klayson.com. Sign-in is OAuth through klayson.com.
+Your assistant sends the tool calls you ask for, and your sign-in, to `https://api.klayson.com/mcp`. The calls can carry your brand's website, its guide and the edits you make to it, the design values your agent reads from your code (tokens, fonts, components, each with its file and line, never secrets or application code), other websites you ask it to read, the HTML, page addresses or pictures it checks, and files you upload. Klayson answers with your brand's pages, the reads, the checks and links to files on klayson.com. Sign-in is OAuth through klayson.com.
 
 Klayson never changes a plan, buys API credits, invites people or publishes a brand on its own. Those are your own acts in Klayson.
 

@@ -12,19 +12,19 @@ Send the design values you read from this repo, so every agent reads the brand a
 
 ## check_against_brand
 
-Check a picture or a canvas frame against a brand's own pieces (its running ads and posts): the palette, the ground, the case, where the logo sits, how large the product is, whether a button is drawn. Answers a score (0 to 1) and notes worst first, each with what was measured, what the brand does and the fix, and `against`: which brand or read it was checked against. Give a design_id (a frame of this workspace), an asset_id, or a public image_url. By default the check is against the workspace's own brand (`brand` picks one of several); read_id checks against a site read with extract_brand instead (depth full, so it has the brand's pieces). Use it to check a finished picture before it is shown. 1 API credit with an API key or on /mcp/brand. The answer says credits_remaining.
+Check a picture or a canvas frame against a brand's own pieces (its running ads and posts): the palette, the ground, the case, where the logo sits, how large the product is, whether a button is drawn. Answers a score (0 to 1) and notes worst first, each with what was measured, what the brand does and the fix, and `against`: which brand or read it was checked against. Give a design_id (a frame of this workspace), an asset_id, or a public image_url. By default the check is against the workspace's own brand (`brand` picks one of several); read_id checks against a site read with extract_brand instead (depth full, so it has the brand's pieces). Use it to check a finished picture before it is shown. 1 API credit with an API key or on /mcp. The answer says credits_remaining.
 
 ## check_design
 
-Render a page you built against a design context pack and list what is wrong, each with its fix: console errors, files that did not load, the brand's fonts not on screen, overflow at 390px, clipped text, low contrast, generic-AI tells, the logo or pictures redrawn instead of used, a page that did not style. Give html (your index.html; the pack's paths fonts/… and brand/… load from the pack, anything else needs a full https address) or the public url of the page. Answers job_id: get_job(job_id, wait true) gives problems, the page's outline and screenshots at 1440 and 390 to compare with the pack's reference/. Fix, then check again. 1 API credit with an API key or on /mcp/brand.
+Render a page you built against a design context pack and list what is wrong, each with its fix: console errors, files that did not load, the brand's fonts not on screen, overflow at 390px, clipped text, low contrast, generic-AI tells, the logo or pictures redrawn instead of used, a page that did not style. Give html (your index.html; the pack's paths fonts/… and brand/… load from the pack, anything else needs a full https address) or the public url of the page. Answers job_id: get_job(job_id, wait true) gives problems, the page's outline and screenshots at 1440 and 390 to compare with the pack's reference/. Fix, then check again. 1 API credit with an API key or on /mcp.
 
 ## create_brand
 
-Add a brand to the workspace (an agency's client, a second line). One of: url, the brand's website, read in full (answers the brand and a job_id; get_job with wait true until it is done, then read the brand with brand set to its id); read_id, a full read from extract_brand saved as the brand without reading again; guide_asset_id or guide_url, the brand's own brand guide as a PDF, Word, PowerPoint or Google Docs/Slides guide (a file goes through create_upload_link kind=file; a Google link is passed as it is), read into the brand (the name comes from the guide unless given; answers a job_id for get_job); or name alone, a brand by hand for a business with no website. A site the workspace already has answers that brand (existing: true), never a copy.
+Add a brand to the workspace (an agency's client, a second line). One of: url, the brand's website, read in full (answers the brand and a job_id; get_job with wait true until it is done, then read the brand with brand set to its id); read_id, a full read from extract_brand saved as the brand without reading again; guide_asset_id or guide_url, the brand's own brand guide as a PDF, Word, PowerPoint or Google Docs/Slides guide (a file goes through create_upload_link kind=file; a Google link is passed as it is), read into the brand (the name comes from the guide unless given; answers a job_id for get_job); or name alone, a brand by hand for a business with no website. A site the workspace already has answers that brand (existing: true), never a copy. Never changes the default brand (set_default_brand does).
 
 ## create_upload_link
 
-Get a link that puts images straight into this workspace, for a file attached in chat or on the person's computer (a chat attachment cannot be passed as an argument). If you can run a shell or code and the file is on disk (a path you were given, an upload folder), send it yourself: run upload_command with the file's path; the answer is the asset. Otherwise give the person the upload_url to click and drop their images on. The link works for an hour, as many times as needed, and only adds images to this workspace. kind defaults to product (screen for an app or website screenshot). kind file takes a document instead: the brand's own brand guide as a PDF, Word (.docx), PowerPoint (.pptx), text or markdown file, up to 50 MB; its asset_id is what import_brand_guide takes. A Google Docs or Google Slides guide needs no link: pass its share link as url to import_brand_guide. kind library takes what the brand's library keeps: a picture, a GIF, an MP4 or WebM video up to 50 MB, or a Lottie JSON.
+Get a link that puts files straight into this workspace, for a file attached in chat or on the person's computer (a chat attachment cannot be passed as an argument). Where a shell can run and the file is on disk, upload_command with the file's path sends it and answers the asset; otherwise the person clicks upload_url and drops their files on it. The link works for an hour, as many times as needed, and only adds files to this workspace. kind defaults to product (screen for an app or website screenshot): a picture, whose asset_id check_design takes. kind file takes a document: the brand's own brand guide as a PDF, Word (.docx), PowerPoint (.pptx), text or markdown file, up to 50 MB; its asset_id is what import_brand_guide takes. create_brand takes it as guide_asset_id. A Google Docs or Google Slides guide needs no link: its share link is passed as url to import_brand_guide. kind library takes what the brand's library keeps: a picture, a GIF, an MP4 or WebM video up to 50 MB, or a Lottie JSON; save_to_library takes its asset_id.
 
 ## decide_suggestion
 
@@ -40,7 +40,7 @@ Read a site's UI into a design context pack, so you can build pages that look li
 
 ## get_api_credits
 
-The workspace's Brand API credits: the balance and the last 50 changes (each with what it was for: free, topup, extract_plain, extract_full, check, refund). extract_brand costs 1 API credit a site (2 with depth full); check_against_brand costs 1 when called with an API key or on /mcp/brand; reading kept results costs nothing. Every workspace starts with 25 free API credits; they never expire.
+The workspace's Brand API credits: the balance and the last 50 changes (each with what it was for: free, topup, extract_plain, extract_full, check, refund). extract_brand costs 1 API credit a site (2 with depth full); check_against_brand costs 1 when called with an API key or on /mcp; reading kept results costs nothing. Every workspace starts with 25 free API credits; they never expire.
 
 ## get_brand
 
@@ -49,6 +49,10 @@ The brand, as an agent should read it first: the Overview page in full (what the
 ## get_brand_extract
 
 One brand read as Brand Extract v1, as far as it has landed: `status` (reading, then complete, partial, blocked or failed, with `reason` and `next_step` when it is not complete) and `sections` (each pending, done, skipped or failed) say what is in; ask again while it is reading. A blocked or failed read was not charged. Brand and facts (with depth full, or the workspace's own site; facts.products is the store's whole catalogue, each with its name, price, link, first picture and variants, and the first 8 also with their kept photos, description and cutout), identity (colors with role, usage and share; type per role with the real family, its font files, licensing and specs; buttons and cards as CSS; surfaces; logos; pictures), the design system, the site's photographs, the brand's own pieces and how it composes them, the page's sections, the kept HTML, CSS and screenshot. Every field says its source (computed, css, pixels, site, ad_library, instagram, model) and a confidence; file links expire in seven days. get_brand_materials lists the read ids.
+
+## get_brand_markdown
+
+A brand's system as one markdown document (for a project's DESIGN.md or notes), mirroring its pages: the list of pages with when to use each, then every page's values, rules and examples, pictures and files as links, and what is not known said as not known. page gives one page with its subpages. For a brand of the workspace you may see. For reading a brand page by page, get_brand and get_page are lighter.
 
 ## get_brand_materials
 
@@ -60,7 +64,7 @@ A design context pack: DESIGN.md (format md, the default) or its structured JSON
 
 ## get_job
 
-Status of a background job, such as a brand being read by create_brand: queued, running, done or failed. done carries output, failed carries error. wait true answers once the job is done or failed (up to about 40 seconds; call again with wait true while it still runs), so no polling.
+Status of a background job, such as a brand's site being read or a guide imported: queued, running, done or failed. done carries output, failed carries error. wait true answers once the job is done or failed (up to about 40 seconds; call again with wait true while it still runs), so no polling.
 
 ## get_library
 
@@ -76,15 +80,31 @@ One page of a brand's system in full: its blocks in order, each a value (tokens 
 
 ## import_brand_guide
 
-Read the brand's own brand guide into its brand guide: a PDF, Word, PowerPoint or Google Docs/Slides guide (or a text or markdown file). Fills empty fields only, unless replace is true; never a field a person or an agent edited. About a minute.
+Read the brand's own brand guide into its brand guide: a PDF, Word, PowerPoint or Google Docs/Slides guide (or a text or markdown file). The fields of every section, the colors (hex), the fonts (families) and the logo when a page or a picture in it shows it clearly. asset_id is the file uploaded through create_upload_link (kind=file); url is a public link to the file, or a Google Docs or Google Slides share link (fetched as its PDF; it must be shared with anyone with the link). Fills empty fields only, unless replace is true; never a field a person or an agent edited. Answers a job: get_job (wait true) says what was filled, then get_brand shows it. About a minute.
 
 ## list_suggestions
 
 The suggested changes to a brand's system, newest first: each with its page, the change, who suggested it and its status (open, approved, rejected). People who can edit the brand see every one; people who can only view see their own. decide_suggestion approves or rejects one.
 
+## read_brand_pieces
+
+Read the brand's own running ads (by the pages the brand read found) and the posts of its Instagram account now, tagged and kept as the examples on its Ads and Social pages. instagram sets or corrects the account (a handle, @handle or the profile's address): it is kept on the brand and its latest posts are read, about 30 a call. Called again, it reads older posts, until the answer says there are no more. Posts already kept from another account stay; remove_brand_piece takes one out. The answer says how many posts were added and how many are kept; a private or missing account is said in words, never an error. Counts on the workspace's usage; no API credits.
+
+## remove_brand_piece
+
+Take one of the brand's own ads or posts out of its pieces by its asset_id (each example on the Ads and Social pages carries one): it leaves those pages and no longer shapes designs. The picture itself is deleted.
+
 ## save_to_library
 
 Save something to the brand's library, as approved work or as a reference, so every agent sees it before making something for that medium. Save only after your person approves something you made, or shares something they like. Ask once ("Save this to Klayson as approved?") and save on a yes. Never save on your own reading of anyone's words. Give exactly one of: asset_id, a file uploaded through create_upload_link with kind library (a picture, a GIF, an MP4 or WebM video, or a Lottie JSON); url, a web page (Klayson takes a picture of it for its card) or a picture or video at an address; or code with code_lang (html, jsx, tsx or css: Klayson keeps the code and draws a picture of it). status is approved (the default) or reference (something they like that is not their own). medium is where it is used: web, app, ads, social, slides, email or print. title is a short name, note one line on why it is good. A picture that has to be made comes from a job: get_job with its id and wait true when you need it.
+
+## scrape_brand
+
+Read the brand's own website again, so its brand guide catches up with the site: the colors, fonts, logo, words, products and pictures, the brand's running ads and posts, and the design read of its pages. url is the brand's website; brand says which brand (the default when left out). What the last read filled is replaced by the new read; anything a person or an agent edited stays as they left it, and files a person uploaded stay. Answers a job_id: get_job with wait true says when it is done (about a minute), then get_brand reads the guide. The first brand's reads are free, up to five a day; reading an added brand, or a sixth time in a day, counts on the workspace's usage. It uses no API credits.
+
+## set_default_brand
+
+Make a brand the workspace's default: the brand every call uses when brand is left out. Making the default brand the default again changes nothing.
 
 ## suggest_change
 
@@ -93,3 +113,7 @@ Propose a change to a brand's system for someone who can edit it to approve. For
 ## update_page
 
 Change a page of a brand's system: its title, its use_when, its place (position), hidden or not, and its blocks. blocks adds blocks and replaces the ones of the same type and name; remove_blocks takes blocks off by name (kept, never deleted). What you write is an edit: it wins over anything read from the site or a guide, and a later read never overwrites it (the read is kept beside it as latest_read). For people who can edit the brand; people who can only view use suggest_change. Only change what the person asked for. rev (from get_page) refuses the write if the page changed since. How to structure a page (you do the structuring; Klayson stores it as sent): title, a short name. use_when, one line saying when an agent should fetch the page ("Making a banner for a social profile"). blocks, a list, each {kind, type, name, data, visual, text}. kind value: one token in data, by type: color {hex, role}, type_style {family, weight, size, line_height, tracking}, font {family, weights}, spacing, radius, size and breakpoint {value or width and height, unit}, shadow {box_shadow}, motion {duration_ms, easing}, asset {url}, component {css or html}, section, recipe {sections}, text. Use the brand's own token names from get_page (its colors, its fonts), never a new name for the same value. kind rule: text holds the rule in the source's own words, never rewritten. kind example: a real example, a picture as visual {kind: image, url} or code in data. visual is what draws it: swatch {hex}, specimen {family, weight, size}, render {css or html}, image {url}, logo {url}. Leave out what the source does not state: never invent a value.
+
+## upload_brand_font
+
+Add one of the brand's own font files, a licensed or custom face the site read could not get: a .woff2, .woff, .otf or .ttf up to 6 MB, as url (a public link to the file) or as data_base64 with its filename. Its family, weight and style are read from the file, and the face is listed on the brand's Typography page with its file (get_page typography). Each weight and style is its own file; a family, weight and style the brand already has is replaced by the new file. A file only on the person's computer is added by the person on the Brand page (Upload font).

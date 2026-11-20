@@ -37,7 +37,7 @@ The answer has `key`, `brand`, `job`, `claim_url`, `expires`, `limits`, `files` 
 
 ## 3. Read the brand
 
-@get_brand first: the Overview in full and every page with its `use_when`. Then @get_page for the pages the job needs (a web page: web, layout, components, sections, pages, colors, typography; an ad: ads, colors, typography, logo, voice). One page at a time, never everything. Over HTTP, `GET /v1/brand-system/markdown` is the whole system in one document.
+@get_brand first: the Overview in full and every page with its `use_when`. Then @get_page for the pages the job needs (a web page: web, layout, components, sections, pages, colors, typography; an ad: ads, colors, typography, logo, voice). One page at a time, never everything. To keep the brand in the repo's own notes (a `DESIGN.md`), @get_brand_markdown answers the whole system as one markdown document (over HTTP, `GET /v1/brand-system/markdown`).
 
 Then @get_library with the medium you are making for (web, app, ads, social, slides, email, print): the work the team approved, and the references it keeps. Match what was approved. Over HTTP, `GET /v1/brand/library?medium=web`.
 
