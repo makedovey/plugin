@@ -1,7 +1,7 @@
 {
   "name": "klayson",
   "version": "0.1.0",
-  "description": "Klayson's studio and brand guide in your agent: design ads, social posts and other marketing in your brand on Klayson's canvas, and read the brand guide (voice, logo, colors, type, imagery, products) so whatever your agent designs or builds, an ad, a website or a deck, follows the brand.",
+  "description": "Klayson is the brand and design source of truth for your agent: it reads your brand guide (logo, colors, typography, voice, layout, components and a page for each medium) before it builds anything, edits the guide with you, extracts the brand of any website, and checks what your agent made against the brand.",
   "author": {
     "name": "Klayson",
     "email": "daryl@klayson.com",
@@ -13,18 +13,17 @@
   "keywords": [
     "brand-guide",
     "brand",
-    "ad-creatives",
-    "social-media",
-    "meta-ads",
+    "design-system",
+    "brand-extract",
     "design",
-    "marketing"
+    "design-check"
   ],
   "mcpServers": "./.mcp.json",
   "skills": "./skills/",
   "interface": {
     "displayName": "Klayson",
-    "shortDescription": "Design in your brand, keep agents on it",
-    "longDescription": "Klayson is the studio where you design ads, social posts and other marketing for your brand, with Klayson's chat or with Codex, every design an editable frame on a Klayson canvas. It is also your brand's source of truth: each brand has a guide in eight sections (brand, voice, logo, color, typography, imagery, in use, products), read from your website or your PDF guide, and Codex reads it before it designs or builds anything for the brand. Needs a Klayson account: signing in for the first time makes one on the Free plan, with limited usage each month and no card.",
+    "shortDescription": "Your brand guide, read before Codex builds",
+    "longDescription": "Klayson is your brand's source of truth for agents. Each brand is a guide of pages (logo, colors, typography, voice, imagery, layout, components, and one for each medium such as web, app, slides and email), read from your website, your PDF guide and your code, and edited by your team. Codex reads it before it builds anything for the brand, extracts the brand of any other website when the job needs one, and checks what it made against the brand. Needs a Klayson account: signing in for the first time makes one on the Free plan, with no card.",
     "developerName": "Klayson",
     "category": "Creativity",
     "capabilities": [
@@ -36,9 +35,9 @@
     "privacyPolicyURL": "https://klayson.com/privacy",
     "termsOfServiceURL": "https://klayson.com/terms",
     "defaultPrompt": [
-      "Use Klayson to set up my brand and make my first 3 ads.",
-      "Read my brand guide from Klayson and follow it in this project.",
-      "Make 5 Instagram posts for our summer sale in my brand."
+      "Use Klayson to set up my brand guide from my website and this codebase.",
+      "Read my brand from Klayson and follow it in this project.",
+      "Check this page against my brand with Klayson."
     ],
     "brandColor": "#F54E00",
     "composerIcon": "./assets/logo.svg",
@@ -46,7 +45,7 @@
   },
   "extensions": {
     "com.openai": {
-      "onboardingSkill": "./skills/setup/SKILL.md"
+      "onboardingSkill": "./skills/brand/SKILL.md"
     }
   }
 }

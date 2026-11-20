@@ -1,15 +1,15 @@
 # Klayson for Claude and Codex
 
-[Klayson](https://klayson.com) is the studio where you design ads, social posts and other marketing for your brand, with Klayson's chat or with your own AI agent. Every design is an editable frame on a Klayson canvas. Klayson is also your brand's source of truth for agents: each brand has a guide in eight sections (brand, voice, logo, color, typography, imagery, in use, products), read from your website or your PDF guide and edited by you, and whatever your agent designs or builds for the brand, an ad, a website or a deck, follows it.
+[Klayson](https://klayson.com) is the brand and design source of truth for agents. Each brand is a guide of pages (logo, colors, typography, voice, imagery, layout, components, and one for each medium such as web, app, slides and email), read from your website, your PDF guide and your code, and edited by your team. Your agent reads it before it builds or designs anything for the brand, reads the brand of any other website when the job needs one, and checks what it made against the brand.
 
 This plugin brings Klayson into Claude (web, desktop and Claude Code) and Codex. It adds two things:
 
-- **The Klayson server**, `https://api.klayson.com/mcp`, with its tools: the brand guide, research, briefs, making ads and posts, the canvas.
-- **Three skills.** `klayson` is the know-how: start with `get_me`, set up the brand, read and follow the brand guide, research then brief then make, design an ad on the canvas, judge an ad, and what never to do. `setup` checks the connection and sets up the brand. `make-ads` runs research, brief and make for a number of ads.
+- **The Klayson brand server**, `https://api.klayson.com/mcp/brand`, with its tools: the brand guide (`get_brand`, `get_page` and the edit tools), the Brand Extract API (`extract_brand`, `get_brand_extract`, `get_brand_materials`, `check_against_brand`, `get_api_credits`), the check (`check_design`), sending your codebase's design values (`capture_codebase`) and the Library of approved work.
+- **Two skills.** `klayson` is the know-how: start with `get_me`, set up the brand, read the brand before you make anything, extract a site, check the result, and what never to do. `brand` is the same flow for a codebase, including a repo with no Klayson connection yet.
 
 ## What you need
 
-A Klayson account. Signing in for the first time makes one: the Free plan has limited usage each month and needs no card. Research and new ads use the plan's monthly usage; reading what is there uses almost none. Plans and prices are at [klayson.com/pricing](https://klayson.com/pricing). Your assistant's own plan is separate.
+A Klayson account. Signing in for the first time makes one on the Free plan, with no card. Reading another website's brand and checking a design use API credits: every workspace starts with 25 once, and more are on the API page ($20 for 100, $100 for 600, $500 for 3,500). Plans and prices are at [klayson.com/pricing](https://klayson.com/pricing). Your assistant's own plan is separate.
 
 There is no API key. The first Klayson call opens Klayson's sign-in in your browser (work email or Google), and you approve the connection there.
 
@@ -21,7 +21,7 @@ There is no API key. The first Klayson call opens Klayson's sign-in in your brow
 2. Choose Add, then Add marketplace, and enter `makedovey/plugin`.
 3. Find Klayson in the list and choose Add.
 4. Open Klayson, go to its Connectors tab, add Klayson and connect it. Klayson's sign-in opens.
-5. In a new chat, ask "Use Klayson to set up my brand and make my first 3 ads." or type `/` and choose `klayson:setup`.
+5. In a new chat, ask "Use Klayson to set up my brand guide from my website." or type `/` and choose `klayson:brand`.
 
 A plugin added on claude.ai is on your account, so it is in the desktop app, Cowork and Claude Code too.
 
@@ -34,7 +34,7 @@ claude plugin install klayson@klayson
 
 Claude Code 2.1.292 or later does both in one command: `claude plugin install klayson --marketplace makedovey/plugin`. Inside a session (2.1.275 or later): `/plugin install klayson --marketplace makedovey/plugin`.
 
-Then start a new session, type `/mcp`, choose `plugin:klayson:klayson` and Authenticate. Run `/klayson:setup` to check the connection and set up your brand, or `/klayson:make-ads 5 for the summer sale`.
+Then start a new session, type `/mcp`, choose `plugin:klayson:klayson` and Authenticate. Run `/klayson:brand` to set up your brand guide from your site and code, or just ask your agent to build something in your brand.
 
 ### Codex
 
@@ -42,41 +42,35 @@ Then start a new session, type `/mcp`, choose `plugin:klayson:klayson` and Authe
 codex plugin marketplace add makedovey/plugin
 ```
 
-Then in Codex, type `/plugins`, open the Klayson marketplace and install Klayson. Start a new session and sign in once with `codex mcp login klayson` (in the Codex app: Settings, MCP servers, Authenticate). Type `$` to pick a Klayson skill by hand, or just ask. In the ChatGPT desktop app, the marketplace shows as a source in the Plugins Directory, and the plugin's setup runs the `setup` skill.
+Then in Codex, type `/plugins`, open the Klayson marketplace and install Klayson. Start a new session and sign in once with `codex mcp login klayson` (in the Codex app: Settings, MCP servers, Authenticate). Type `$` to pick a Klayson skill by hand, or just ask. In the ChatGPT desktop app, the marketplace shows as a source in the Plugins Directory, and the plugin's setup runs the `brand` skill.
 
 ### Any other MCP client (no plugin)
 
-Klayson is one remote MCP server. Add it the way your client adds one:
+Klayson is a remote MCP server. Add it the way your client adds one:
 
-- Address: `https://api.klayson.com/mcp`
+- Address: `https://api.klayson.com/mcp/brand`
 - Transport: Streamable HTTP
 - Authentication: OAuth on the first call. No API key.
 
 ```sh
-claude mcp add --transport http klayson https://api.klayson.com/mcp
+claude mcp add --transport http klayson https://api.klayson.com/mcp/brand
 ```
 
 ```toml
 # ~/.codex/config.toml
 [mcp_servers.klayson]
-url = "https://api.klayson.com/mcp"
+url = "https://api.klayson.com/mcp/brand"
 ```
 
-An agent that only needs the brand, to build a website, a deck or code, can connect `https://api.klayson.com/mcp/brand` instead: the same sign-in and brands with only the brand tools (the brand guide, the brand reads, the check, the brand list).
-
-```sh
-claude mcp add --transport http klayson-brand https://api.klayson.com/mcp/brand
-```
-
-Most other clients take `{"mcpServers": {"klayson": {"url": "https://api.klayson.com/mcp"}}}`. Step by step guides for each app are at [klayson.com/mcp](https://klayson.com/mcp). Without the plugin you get the tools and Klayson's own instructions, but not the skills.
+Most other clients take `{"mcpServers": {"klayson": {"url": "https://api.klayson.com/mcp/brand"}}}`. The same sign-in also opens `https://api.klayson.com/mcp`, which lists the brand tools first and Klayson's older ad and canvas tools after them. Without the plugin you get the tools and Klayson's own instructions, but not the skills.
 
 ## What it runs, sends and fetches
 
-The plugin is text: a server address and three skills. It installs no local server, no hooks, no scripts and no packages.
+The plugin is text: a server address and two skills. It installs no local server, no hooks, no scripts and no packages.
 
-Your assistant sends the tool calls you ask for, and your sign-in, to `https://api.klayson.com/mcp`. The calls can carry your brand's website, its guide and the edits you make to it, product names, photos and files you upload, your words for a brief or an edit, and ids of ads and canvases. Klayson answers with ads, briefs, pictures and links to your canvases on klayson.com. Sign-in is OAuth through klayson.com. In apps that show cards (Claude, ChatGPT), the cards load from Klayson's server and show pictures from Klayson's storage and from Facebook and Instagram.
+Your assistant sends the tool calls you ask for, and your sign-in, to `https://api.klayson.com/mcp/brand`. The calls can carry your brand's website, its guide and the edits you make to it, the design values your agent reads from your code (tokens, fonts, components, each with its file and line, never secrets or application code), other websites you ask it to read, the HTML, page addresses or pictures it checks, and files you upload. Klayson answers with your brand's pages, the reads, the checks and links to files on klayson.com. Sign-in is OAuth through klayson.com.
 
-Klayson never publishes to Meta, changes a plan or deletes anything on its own. Publishing is your own press on Klayson's Publish card.
+Klayson never changes a plan, buys API credits, invites people or publishes a brand on its own. Those are your own acts in Klayson.
 
 [Privacy policy](https://klayson.com/privacy) and [terms](https://klayson.com/terms).
 

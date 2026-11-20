@@ -1,6 +1,6 @@
 {
   "name": "klayson",
-  "description": "Klayson's plugin: design marketing in your brand and give your agents the brand guide.",
+  "description": "Klayson's plugin: give your agents your brand guide, extract any site's brand, and check designs against it.",
   "owner": {
     "name": "Klayson",
     "email": "daryl@klayson.com",
@@ -11,16 +11,16 @@
       "name": "klayson",
       "displayName": "Klayson",
       "source": "./",
-      "description": "Klayson's studio and brand guide in your agent: design ads, social posts and other marketing in your brand on Klayson's canvas, and read the brand guide (voice, logo, colors, type, imagery, products) so whatever your agent designs or builds, an ad, a website or a deck, follows the brand.",
-      "category": "marketing",
+      "description": "Klayson is the brand and design source of truth for your agent: it reads your brand guide (logo, colors, typography, voice, layout, components and a page for each medium) before it builds anything, edits the guide with you, extracts the brand of any website, and checks what your agent made against the brand.",
+      "category": "design",
       "homepage": "https://klayson.com",
       "tags": [
         "brand-guide",
         "brand",
-        "ad-creatives",
-        "social-media",
-        "meta-ads",
-        "marketing"
+        "design-system",
+        "brand-extract",
+        "design",
+        "design-check"
       ]
     }
   ]

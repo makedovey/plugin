@@ -1,10 +1,10 @@
 interface:
   display_name: "Klayson"
-  short_description: "Design in your brand and follow its guide"
+  short_description: "Read the brand, extract a site, check the result"
 dependencies:
   tools:
     - type: "mcp"
       value: "klayson"
-      description: "Klayson: the studio and the brand guide"
+      description: "Klayson: the brand guide, the Brand Extract API and the check"
       transport: "streamable_http"
-      url: "https://api.klayson.com/mcp"
+      url: "https://api.klayson.com/mcp/brand"

@@ -1,5 +1,0 @@
-interface:
-  display_name: "Set up Klayson"
-  short_description: "Connect Klayson and set up the brand"
-policy:
-  allow_implicit_invocation: false

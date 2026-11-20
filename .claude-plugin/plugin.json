@@ -2,7 +2,7 @@
   "name": "klayson",
   "displayName": "Klayson",
   "version": "0.1.0",
-  "description": "Klayson's studio and brand guide in your agent: design ads, social posts and other marketing in your brand on Klayson's canvas, and read the brand guide (voice, logo, colors, type, imagery, products) so whatever your agent designs or builds, an ad, a website or a deck, follows the brand.",
+  "description": "Klayson is the brand and design source of truth for your agent: it reads your brand guide (logo, colors, typography, voice, layout, components and a page for each medium) before it builds anything, edits the guide with you, extracts the brand of any website, and checks what your agent made against the brand.",
   "author": {
     "name": "Klayson",
     "email": "daryl@klayson.com",
@@ -14,15 +14,14 @@
   "keywords": [
     "brand-guide",
     "brand",
-    "ad-creatives",
-    "social-media",
-    "meta-ads",
+    "design-system",
+    "brand-extract",
     "design",
-    "marketing"
+    "design-check"
   ],
   "icon": "./assets/logo.svg",
   "documentationUrl": "https://github.com/makedovey/plugin/blob/main/README.md",
-  "supportUrl": "https://klayson.com/about",
+  "supportUrl": "https://klayson.com",
   "privacyPolicyUrl": "https://klayson.com/privacy",
   "termsOfServiceUrl": "https://klayson.com/terms"
 }
